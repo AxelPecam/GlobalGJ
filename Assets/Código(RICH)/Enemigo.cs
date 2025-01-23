@@ -18,4 +18,12 @@ public class Enemigo : MonoBehaviour
         Vector3 direction = (targetDestination.position - transform.position).normalized;
         rb.velocity = direction * speed;
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }
