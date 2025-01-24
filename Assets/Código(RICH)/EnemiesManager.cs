@@ -69,15 +69,33 @@ public class EnemiesManager : MonoBehaviour
         Debug.Log("Oleada " + currentWave + " comenzando...");
     }
 
+    public List<GameObject> enemyTypes; // Una lista para almacenar diferentes prefabs de enemigos
+
     void SpawnEnemy()
     {
         Vector3 position = GenerateRandomPosition();
         position += player.transform.position; // Genera alrededor del jugador
 
-        GameObject newEnemy = Instantiate(enemyPrefab); // Instancia un enemigo
-        newEnemy.transform.position = position;
+        // Elegir un enemigo al azar de la lista
+        GameObject enemyPrefab = enemyTypes[Random.Range(0, enemyTypes.Count)];
+        GameObject newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+        //newEnemy.GetComponent<Enemigo>().SetTarget(player);
+        
+        if (newEnemy.GetComponent<Bacteria>())
+        {
+            newEnemy.GetComponent<Bacteria>().SetTarget(player);
+        }
+        else if (newEnemy.GetComponent<Enemigo>())
+        {
+            newEnemy.GetComponent<Enemigo>().SetTarget(player);
+        }
+        
+        newEnemy.transform.parent = transform;
+
+        GameObject Enemy = Instantiate(enemyPrefab); // Instancia un enemigo
+        //newEnemy.transform.position = position;
         newEnemy.GetComponent<Enemigo>().SetTarget(player); // Asigna el jugador como objetivo
-        newEnemy.transform.parent = transform; // Organiza los enemigos en el Hierarchy
+        //newEnemy.transform.parent = transform; // Organiza los enemigos en el Hierarchy
 
         activeEnemies.Add(newEnemy); // Agrega el enemigo a la lista de enemigos activos
         enemiesSpawned++; // Incrementa el contador de enemigos generados

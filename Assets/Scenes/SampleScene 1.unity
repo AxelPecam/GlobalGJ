@@ -530,6 +530,9 @@ MonoBehaviour:
   player: {fileID: 1258589143}
   waveDelay: 5
   spawnInterval: 0.5
+  enemyTypes:
+  - {fileID: 8549327662384994435, guid: 56bca2e77d405a1448cee03a010dfa08, type: 3}
+  - {fileID: 6803286557892565633, guid: 8b8f426c980db6745a94b28cf6914417, type: 3}
 --- !u!4 &1803705360
 Transform:
   m_ObjectHideFlags: 0

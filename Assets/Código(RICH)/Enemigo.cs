@@ -26,8 +26,10 @@ public class Enemigo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 direction = (targetDestination.position - transform.position).normalized;
-        rb.velocity = direction * speed;
+        if (targetDestination != null) {
+            Vector3 direction = (targetDestination.position - transform.position).normalized;
+            rb.velocity = direction * speed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
