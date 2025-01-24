@@ -80,7 +80,7 @@ public class EnemiesManager : MonoBehaviour
         GameObject enemyPrefab = enemyTypes[Random.Range(0, enemyTypes.Count)];
         GameObject newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
         //newEnemy.GetComponent<Enemigo>().SetTarget(player);
-        
+
         if (newEnemy.GetComponent<Bacteria>())
         {
             newEnemy.GetComponent<Bacteria>().SetTarget(player);
@@ -89,15 +89,20 @@ public class EnemiesManager : MonoBehaviour
         {
             newEnemy.GetComponent<Enemigo>().SetTarget(player);
         }
-        
+        else if (newEnemy.GetComponent<Parasito>())
+        {
+            newEnemy.GetComponent<Parasito>().SetTarget(player);
+        }
+
         newEnemy.transform.parent = transform;
 
         GameObject Enemy = Instantiate(enemyPrefab); // Instancia un enemigo
-        //newEnemy.transform.position = position;
+        newEnemy.transform.position = position;
         newEnemy.GetComponent<Enemigo>().SetTarget(player); // Asigna el jugador como objetivo
-        //newEnemy.transform.parent = transform; // Organiza los enemigos en el Hierarchy
+        newEnemy.transform.parent = transform; // Organiza los enemigos en el Hierarchy
 
         activeEnemies.Add(newEnemy); // Agrega el enemigo a la lista de enemigos activos
+        //enemyTypes.Add(newEnemy);
         enemiesSpawned++; // Incrementa el contador de enemigos generados
     }
 
@@ -106,6 +111,7 @@ public class EnemiesManager : MonoBehaviour
         if (activeEnemies.Contains(enemy))
         {
             activeEnemies.Remove(enemy); // Elimina el enemigo de la lista cuando muere
+            enemyTypes.Remove(enemy);
         }
     }
 
