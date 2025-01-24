@@ -8,22 +8,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int puntos;
+    public int balas ;
     public TextMeshProUGUI textopuntos;
     void Start()
     {
-        textopuntos.text = "Puntos: " + puntos ;
+        textopuntos.text = "Balas: " + balas ;
     }
     private void Update()
     {
-        if (puntos >= 1700) 
+        if (balas >= 100) 
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            balas = 100;
         }
     }
-    public void sumarpuntos(int p)
+    public void restarbalas(int p)
     {
-        puntos += p ;
-        textopuntos.text = "Puntos: " + puntos;
+        balas -= p ;
+        textopuntos.text = "Balas: " +  balas;
     }
 }

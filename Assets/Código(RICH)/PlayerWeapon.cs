@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
@@ -9,16 +10,23 @@ public class PlayerWeapon : MonoBehaviour
     public new Camera camera;
     public Transform spawner;
     public GameObject bulletPrefab;
+    public GameManager gameManager;
+
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
     {
         RotateTowardsMouse();
         CheckFiring();
+        if (Input.GetMouseButtonDown(0))
+        {
+            gameManager.restarbalas(2);
+        }
     }
 
     private void RotateTowardsMouse()
