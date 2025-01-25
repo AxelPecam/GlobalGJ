@@ -11,10 +11,12 @@ public class Parasito : MonoBehaviour
     public GameObject explosionEffect; // Efecto visual para la explosión
     public float explosionRadius = 2f; // Radio de explosión
     public int explosionDamage = 20; // Daño al jugador
-
+    private EnemiesManager enemiesManager; // Referencia al administrador de enemigos
+    public GameObject deathEffectPrefab; // Prefab del efecto de muerte
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemiesManager = GetComponent<EnemiesManager>();
     }
 
     public void SetTarget(GameObject target)
@@ -48,10 +50,19 @@ public class Parasito : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Explode(); // Explota al tocar al jugador
-        }
-    }
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(20); // Causa 10 de daño al jugador
+            }
 
+    }   }
+
+    private void NotifyManagerAndDestroy()
+    {
+        enemiesManager.RemoveEnemy(gameObject); // Notifica al administrador que este enemigo murió
+        Destroy(gameObject); // Destruye al enemigo
+    }
     private void Explode()
     {
         // Crear un efecto de explosión (opcional)
@@ -66,18 +77,27 @@ public class Parasito : MonoBehaviour
         {
             if (hit.CompareTag("Player"))
             {   
-                /*
-                // Suponiendo que el jugador tiene un script para recibir daño
+                
                 PlayerHealth playerHealth = hit.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
                 {
                     playerHealth.TakeDamage(explosionDamage);
                 }
-                */
+                
             }
         }
 
         // Destruir el enemigo después de la explosión
+        Destroy(gameObject);
+    }
+
+    private void Die()
+    {
+        // Instanciar el efecto de muerte
+        if (deathEffectPrefab != null)
+        {
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 

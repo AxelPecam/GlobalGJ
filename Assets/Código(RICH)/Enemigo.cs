@@ -11,7 +11,8 @@ public class Enemigo : MonoBehaviour
     public GameObject targetGameObject;
 
     private EnemiesManager enemiesManager; // Referencia al administrador de enemigos
-
+    [Header("Death Effect")]
+    public GameObject deathEffectPrefab; // Prefab del efecto de muerte
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +38,7 @@ public class Enemigo : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);   // Destruye la bala
+            Die();
             NotifyManagerAndDestroy();  // Notifica y destruye al enemigo
         }
     }
@@ -49,58 +51,24 @@ public class Enemigo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<MovJug>())
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Attack();
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(10); // Causa 10 de daño al jugador
+            }
         }
     }
-
-    public void Attack()
+    public void Die()
     {
-        // Lógica para atacar al jugador (si la implementas)
-    }
-    /*
-    public Transform targetDestination;
-    [SerializeField] private float speed;
-    public Rigidbody2D rb;
-    public GameObject targetGameObject;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-    public void SetTarget(GameObject target)
-    {
-        targetGameObject = target;
-        targetDestination = target.transform;
-    }
-
-    private void FixedUpdate()
-    {
-        Vector3 direction = (targetDestination.position - transform.position).normalized;
-        rb.velocity = direction * speed;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Bullet"))
+        if (deathEffectPrefab != null)
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<Character>())
-        {
-            Attack();
-        }
+        // Destruir al enemigo
+        Destroy(gameObject);
     }
-
-    public void Attack()
-    {
-        
-    }
-    */
 }
+

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 580849bd01e780d49b22d78a18c4a131, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -104,9 +104,10 @@ MonoBehaviour:
   speed: 5
   health: 5
   rb: {fileID: 3405993741115659058}
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 896391125194628618, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
   explosionRadius: 2
   explosionDamage: 20
+  deathEffectPrefab: {fileID: 896391125194628618, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
 --- !u!114 &8267361821594392832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,9 +152,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.040535808}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.1789781
 --- !u!50 &3405993741115659058
 Rigidbody2D:
   serializedVersion: 4

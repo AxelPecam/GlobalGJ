@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 33f059e80eab3a84e95dfab023f88633, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
   theRB: {fileID: 2643981754377419192}
   targetGameObject: {fileID: 0}
   health: 4
+  deathEffectPrefab: {fileID: 896391125194628618, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
 --- !u!114 &8983830086416250453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,9 +150,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.18020678}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6802068
 --- !u!50 &2643981754377419192
 Rigidbody2D:
   serializedVersion: 4

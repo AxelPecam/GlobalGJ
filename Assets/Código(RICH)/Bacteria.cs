@@ -10,10 +10,13 @@ public class Bacteria : MonoBehaviour
     public GameObject targetGameObject;
 
     [SerializeField] private int health = 4;
-
+    private EnemiesManager enemiesManager; // Referencia al administrador de enemigos
+    [Header("Death Effect")]
+    public GameObject deathEffectPrefab; // Prefab del efecto de muerte
     private void Awake()
     {
         theRB = GetComponent<Rigidbody2D>();
+        enemiesManager = GetComponent<EnemiesManager>();
     }
 
     public void SetTarget(GameObject target)
@@ -50,6 +53,11 @@ public class Bacteria : MonoBehaviour
         }
     }
 
+    private void NotifyManagerAndDestroy()
+    {
+        enemiesManager.RemoveEnemy(gameObject); // Notifica al administrador que este enemigo murió
+        Destroy(gameObject); // Destruye al enemigo
+    }
     private void TakeDamage()
     {
         health--;
@@ -61,15 +69,23 @@ public class Bacteria : MonoBehaviour
 
     private void Die()
     {
+        // Instanciar el efecto de muerte
+        if (deathEffectPrefab != null)
+        {
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Character>())
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Attack();
-        }
-    }
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(15); // Causa 10 de daño al jugador
+            }
+    }   }
 
     private void Attack()
     {
