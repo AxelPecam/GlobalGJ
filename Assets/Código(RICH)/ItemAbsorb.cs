@@ -19,7 +19,7 @@ public class ItemAbsorb : MonoBehaviour
         {
             // Obtener los componentes del jugador
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            Recarga playerAmmo = other.GetComponent<Recarga>();  // Ahora buscamos PlayerAmmo
+            PlayerAmmo playerAmmo = other.GetComponent<PlayerAmmo>();  // Ahora buscamos PlayerAmmo
 
             if (playerHealth != null)
             {
