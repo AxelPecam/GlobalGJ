@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -7392770059034149949}
   - component: {fileID: -1126493154932167312}
   - component: {fileID: -4794449343450387957}
-  - component: {fileID: 7633480250612908187}
+  - component: {fileID: 7015610494551847276}
   m_Layer: 0
   m_Name: Recarga
   m_TagString: Recarga
@@ -159,7 +159,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.256, y: 0.226}
   m_EdgeRadius: 0
---- !u!114 &7633480250612908187
+--- !u!114 &7015610494551847276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,6 +168,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2205981149153195191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d28b7d973ae91dd45a925e3b548eb6e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 36a7e9d219631cb4489a00cf37234b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 1
+  value: 10

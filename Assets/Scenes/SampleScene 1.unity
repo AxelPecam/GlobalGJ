@@ -6985,6 +6985,7 @@ GameObject:
   - component: {fileID: 302339028}
   - component: {fileID: 302339027}
   - component: {fileID: 302339032}
+  - component: {fileID: 302339033}
   m_Layer: 5
   m_Name: UGame
   m_TagString: Untagged
@@ -7096,6 +7097,22 @@ MonoBehaviour:
   - {fileID: 293820666315411432, guid: 39c7ee86b5edb11439f3ce5201a41db6, type: 3}
   - {fileID: 8549327662384994435, guid: 56bca2e77d405a1448cee03a010dfa08, type: 3}
   waveStartDelay: 6
+--- !u!114 &302339033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302339026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28b7d973ae91dd45a925e3b548eb6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balas: 0
+  textopuntos: {fileID: 342170643}
+  gameManager: {fileID: 342170645}
+  currentAmmo: 10
 --- !u!1 &318027889
 GameObject:
   m_ObjectHideFlags: 0
@@ -7788,7 +7805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'AMMO:'
+  m_text: 'AMMO: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -32373,6 +32390,7 @@ GameObject:
   - component: {fileID: 1258589149}
   - component: {fileID: 1258589144}
   - component: {fileID: 1258589148}
+  - component: {fileID: 1258589151}
   - component: {fileID: 1258589150}
   m_Layer: 0
   m_Name: MrDoctor
@@ -32422,7 +32440,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1258589146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32508,7 +32526,7 @@ MonoBehaviour:
   damageEffect: {fileID: 896391125194628618, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
   damageEffectDuration: 0.2
   invincibilityTime: 1
-  deathEffectPrefab: {fileID: 0}
+  deathEffectPrefab: {fileID: 2269434100886776068, guid: 9a122aad47bfea14e891d72b6d00c733, type: 3}
 --- !u!61 &1258589149
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32538,7 +32556,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.17321044, y: -0.083384514}
@@ -32575,6 +32593,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1258589151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258589143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28b7d973ae91dd45a925e3b548eb6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balas: 0
+  textopuntos: {fileID: 0}
+  gameManager: {fileID: 0}
+  currentAmmo: 10
 --- !u!1 &1261234132
 GameObject:
   m_ObjectHideFlags: 0
