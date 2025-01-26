@@ -13,6 +13,7 @@ public class Parasito : MonoBehaviour
     public int explosionDamage = 20; // Daño al jugador
     private EnemiesManager enemiesManager; // Referencia al administrador de enemigos
     public GameObject deathEffectPrefab; // Prefab del efecto de muerte
+    public GameObject VidaDrop;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,6 +43,7 @@ public class Parasito : MonoBehaviour
             if (health <= 0)
             {
                 Explode(); // Explota al ser destruido
+                GameObject Vida = Instantiate(VidaDrop, transform.position, Quaternion.identity);
             }
         }
     }
@@ -96,9 +98,10 @@ public class Parasito : MonoBehaviour
         // Instanciar el efecto de muerte
         if (deathEffectPrefab != null)
         {
-            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);    
         }
         Destroy(gameObject);
+
     }
 
     private void OnDrawGizmosSelected()

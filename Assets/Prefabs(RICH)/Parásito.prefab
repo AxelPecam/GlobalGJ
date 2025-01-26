@@ -108,6 +108,7 @@ MonoBehaviour:
   explosionRadius: 2
   explosionDamage: 20
   deathEffectPrefab: {fileID: 896391125194628618, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
+  VidaDrop: {fileID: 2205981149153195191, guid: 9e32dc3018b660f40a8c38477eab7cc8, type: 3}
 --- !u!114 &8267361821594392832
 MonoBehaviour:
   m_ObjectHideFlags: 0

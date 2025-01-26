@@ -13,6 +13,7 @@ public class Bacteria : MonoBehaviour
     private EnemiesManager enemiesManager; // Referencia al administrador de enemigos
     [Header("Death Effect")]
     public GameObject deathEffectPrefab; // Prefab del efecto de muerte
+    public GameObject BalaDrop;
     private void Awake()
     {
         theRB = GetComponent<Rigidbody2D>();
@@ -46,7 +47,7 @@ public class Bacteria : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
             TakeDamage();
@@ -73,6 +74,7 @@ public class Bacteria : MonoBehaviour
         if (deathEffectPrefab != null)
         {
             Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+            GameObject Recarga = Instantiate(BalaDrop, transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
     }

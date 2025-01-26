@@ -16,9 +16,13 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (balas >= 100) 
+        if (balas >= 100)
         {
             balas = 100;
+        }
+        else if (balas <= 0)
+        {
+
         }
     }
     public void restarbalas(int p)

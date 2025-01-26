@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -38,7 +39,8 @@ public class PlayerHealth : MonoBehaviour
         // Verificar si el jugador murió
         if (currentHealth <= 0)
         {
-            Die();
+            //Die();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         }
 
         // Activar invencibilidad por un tiempo
