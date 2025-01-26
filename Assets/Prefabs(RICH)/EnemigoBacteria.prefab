@@ -105,7 +105,7 @@ MonoBehaviour:
   theRB: {fileID: 2643981754377419192}
   targetGameObject: {fileID: 0}
   health: 4
-  deathEffectPrefab: {fileID: 896391125194628618, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
+  deathEffectPrefab: {fileID: 5295501539065647134, guid: dfae322f1cd06c343b1f42826fba8cfe, type: 3}
   BalaDrop: {fileID: 2205981149153195191, guid: 837c5f88344113c49b4e488d6b41430c, type: 3}
 --- !u!114 &8983830086416250453
 MonoBehaviour:

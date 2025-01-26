@@ -104,7 +104,7 @@ MonoBehaviour:
   speed: 4
   rb: {fileID: 5415253746358973155}
   targetGameObject: {fileID: 0}
-  deathEffectPrefab: {fileID: 4560733983283839279, guid: 9a122aad47bfea14e891d72b6d00c733, type: 3}
+  deathEffectPrefab: {fileID: 8873930947645028948, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
 --- !u!114 &202757794888096474
 MonoBehaviour:
   m_ObjectHideFlags: 0

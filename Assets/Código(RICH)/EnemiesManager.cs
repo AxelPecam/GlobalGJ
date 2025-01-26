@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class EnemiesManager : MonoBehaviour
-{
+{   
     public GameObject enemyPrefab;       // Prefab del enemigo
     public Vector2 spawnArea;           // Área de spawn alrededor del jugador
     public GameObject player;           // Referencia al jugador
 
     public float waveDelay = 5f;        // Tiempo entre oleadas (si todos los enemigos están muertos)
     private float waveTimer;            // Temporizador para la siguiente oleada
-    private int currentWave = 1;        // Número de la oleada actual
+    private int currentWave;        // Número de la oleada actual
     private int enemiesPerWave = 5;     // Enemigos al inicio de cada oleada
     private int enemiesSpawned = 0;     // Contador de enemigos generados en la oleada actual
     private bool spawningWave = false;  // ¿Se está generando una oleada?
+    public TextMeshProUGUI waveText; // Referencia al texto en el Canvas
+    public float waveTextDuration = 2f; // Duración del aviso de oleada
+    public WaveManager waveManager; // Asignar en el inspector.
+    public int initialEnemies = 5;
+    public int waveIncrement = 2;
+    private int enemiesRemaining;
+    private bool waveInProgress;
 
     public float spawnInterval = 0.5f;  // Tiempo entre spawns individuales
     private float spawnTimer;           // Temporizador interno para el siguiente spawn
@@ -24,10 +32,22 @@ public class EnemiesManager : MonoBehaviour
     void Start()
     {
         waveTimer = waveDelay;          // Inicializa el temporizador entre oleadas
+        waveText.gameObject.SetActive(false); // Oculta el texto al inicio
+        StartWave();
+        if (waveManager == null)
+        {
+            waveManager = FindObjectOfType<WaveManager>();
+        }
+
     }
 
     void Update()
     {
+        if (waveInProgress && enemiesRemaining <= 0)
+        {
+            waveInProgress = false;
+            Invoke(nameof(StartWave), 2f); // Esperar 2 segundos antes de la próxima oleada
+        }
         // Si no estamos generando una oleada, verifica si todos los enemigos fueron derrotados
         if (!spawningWave)
         {
@@ -63,10 +83,23 @@ public class EnemiesManager : MonoBehaviour
 
     void StartWave()
     {
+        currentWave += 1;
+        enemiesRemaining = initialEnemies + (waveIncrement * (currentWave - 1));
+
+        StartCoroutine(ShowWaveText($"¡New Wave {currentWave} enemies approaching!"));
+
+        for (int i = 0; i < enemiesRemaining; i++)
+        {
+            SpawnEnemy();
+        }
+        
+        waveInProgress = true;
         enemiesSpawned = 0;                 // Resetea el contador de enemigos generados
         spawningWave = true;               // Activa el modo generación
         spawnTimer = 0f;                   // Comienza a generar enemigos de inmediato
         Debug.Log("Oleada " + currentWave + " comenzando...");
+        
+       
     }
 
     public List<GameObject> enemyTypes; // Una lista para almacenar diferentes prefabs de enemigos
@@ -107,11 +140,16 @@ public class EnemiesManager : MonoBehaviour
     }
 
     public void RemoveEnemy(GameObject enemy)
-    {
+    {   
         if (activeEnemies.Contains(enemy))
         {
             activeEnemies.Remove(enemy); // Elimina el enemigo de la lista cuando muere
             enemyTypes.Remove(enemy);
+        }
+        
+        if (enemiesRemaining <= 0)
+        {
+            waveManager.StartNextWave(); // Avisar al WaveManager que inicie la próxima oleada
         }
     }
 
@@ -134,6 +172,27 @@ public class EnemiesManager : MonoBehaviour
         position.z = 0;
         return position;
     }
+    public void EnemyDefeated()
+    {
+        enemiesRemaining--; // Decrementa el contador de enemigos cuando un enemigo muere.
+
+        Debug.Log("Enemigos restantes: " + enemiesRemaining); // Imprime la cantidad de enemigos restantes
+
+        if (enemiesRemaining <= 0)
+        {
+            // Llama al WaveManager para pasar a la siguiente oleada
+            waveManager.StartNextWave();
+        }
+    }
+    
+    IEnumerator ShowWaveText(string message)
+    {
+        waveText.text = message;
+        waveText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(waveTextDuration);
+        waveText.gameObject.SetActive(false);
+    }
+
     /*
     public GameObject enemy;
     public Vector2 spawnArea;

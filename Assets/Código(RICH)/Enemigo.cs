@@ -39,6 +39,7 @@ public class Enemigo : MonoBehaviour
         {
             Destroy(other.gameObject);   // Destruye la bala
             Die();
+            FindObjectOfType<EnemiesManager>().EnemyDefeated(); // Notifica al EnemiesManager que este enemigo fue derrotado
             NotifyManagerAndDestroy();  // Notifica y destruye al enemigo
         }
     }

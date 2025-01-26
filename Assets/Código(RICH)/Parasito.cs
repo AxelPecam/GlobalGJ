@@ -43,6 +43,7 @@ public class Parasito : MonoBehaviour
             if (health <= 0)
             {
                 Explode(); // Explota al ser destruido
+                FindObjectOfType<EnemiesManager>().EnemyDefeated(); // Notifica al EnemiesManager que este enemigo fue derrotado
                 GameObject Vida = Instantiate(VidaDrop, transform.position, Quaternion.identity);
             }
         }

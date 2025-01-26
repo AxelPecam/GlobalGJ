@@ -50,6 +50,7 @@ public class Bacteria : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
+            FindObjectOfType<EnemiesManager>().EnemyDefeated(); // Notifica al EnemiesManager que este enemigo fue derrotado
             TakeDamage();
         }
     }

@@ -104,10 +104,10 @@ MonoBehaviour:
   speed: 5
   health: 5
   rb: {fileID: 3405993741115659058}
-  explosionEffect: {fileID: 896391125194628618, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
+  explosionEffect: {fileID: 2338638096354124616, guid: e23fa1f70f87efc4db7c2629ad36c5e6, type: 3}
   explosionRadius: 2
   explosionDamage: 20
-  deathEffectPrefab: {fileID: 896391125194628618, guid: a004e05908dc8b444b90d6ca9b1f61ab, type: 3}
+  deathEffectPrefab: {fileID: 0}
   VidaDrop: {fileID: 2205981149153195191, guid: 9e32dc3018b660f40a8c38477eab7cc8, type: 3}
 --- !u!114 &8267361821594392832
 MonoBehaviour:
