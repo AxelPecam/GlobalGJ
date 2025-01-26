@@ -7112,7 +7112,7 @@ MonoBehaviour:
   balas: 0
   textopuntos: {fileID: 342170643}
   gameManager: {fileID: 342170645}
-  currentAmmo: 10
+  playerAmmo: {fileID: 0}
 --- !u!1 &318027889
 GameObject:
   m_ObjectHideFlags: 0
@@ -32662,7 +32662,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.17321044, y: -0.083384514}
+  m_Offset: {x: 0.09205437, y: -0.3268538}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -32673,7 +32673,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0784855, y: 4.3407307}
+  m_Size: {x: 3.3499336, y: 1.6084691}
   m_EdgeRadius: 0
 --- !u!95 &1258589150
 Animator:
@@ -32705,13 +32705,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258589143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d28b7d973ae91dd45a925e3b548eb6e0, type: 3}
+  m_Script: {fileID: 11500000, guid: f8d6af15b7c06bb44b986f7320b82988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balas: 0
-  textopuntos: {fileID: 0}
-  gameManager: {fileID: 0}
   currentAmmo: 10
+  ammoText: {fileID: 342170643}
 --- !u!1 &1261234132
 GameObject:
   m_ObjectHideFlags: 0
