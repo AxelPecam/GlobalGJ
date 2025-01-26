@@ -6,7 +6,7 @@ public class MovJug : MonoBehaviour
 {
     public Rigidbody2D thRB;
     public float moveSpeed;
-    private Vector3 movement;
+    public Vector3 movement;
     private Animator anim;
     private bool facingRight;
     public Transform pistol;
@@ -17,6 +17,7 @@ public class MovJug : MonoBehaviour
         thRB = GetComponent<Rigidbody2D>();
         movement = new Vector3();
         anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
